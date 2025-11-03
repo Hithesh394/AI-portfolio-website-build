@@ -36,7 +36,7 @@ export default function Navbar() {
         {/* Social Links */}
         <div className="hidden md:flex gap-4">
           <a
-            href="https://github.com"
+            href="https://github.com/Hithesh394"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-purple-400 transition"
@@ -44,7 +44,7 @@ export default function Navbar() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com"
+            href="http://www.linkedin.com/in/hithesh3336"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-purple-400 transition"
@@ -75,7 +75,7 @@ export default function Navbar() {
             ))}
             <div className="flex gap-4 pt-4">
               <a
-                href="https://github.com"
+                href="https://github.com/Hithesh394"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-purple-400 transition"
@@ -83,7 +83,7 @@ export default function Navbar() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com"
+                href="http://www.linkedin.com/in/hithesh3336"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-purple-400 transition"

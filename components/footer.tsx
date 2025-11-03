@@ -43,7 +43,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Hithesh394"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-foreground transition"
@@ -53,7 +53,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://linkedin.com"
+                  href="http://www.linkedin.com/in/hithesh3336"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-foreground transition"
@@ -62,7 +62,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@email.com" className="hover:text-foreground transition">
+                <a href="mailto:gangadharhithesh.13@gmail.com" className="hover:text-foreground transition">
                   Email
                 </a>
               </li>
