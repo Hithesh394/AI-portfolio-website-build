@@ -120,7 +120,7 @@ export default function ContactPage() {
               <h3 className="font-bold mb-4">Social Links</h3>
               <div className="space-y-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Hithesh394"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-purple-400 hover:text-purple-300 transition"
@@ -128,7 +128,7 @@ export default function ContactPage() {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="http://www.linkedin.com/in/hithesh3336"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-purple-400 hover:text-purple-300 transition"
