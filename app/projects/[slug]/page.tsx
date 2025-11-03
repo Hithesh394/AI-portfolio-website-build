@@ -8,7 +8,8 @@ const projectDetails: { [key: string]: any } = {
     description: "Ratings & feedback submission task for the Harvard/MIT Data Science course.",
     fullDescription:
       "Full documentation coming soon: Ratings collection, feedback forms, validation, and analytics to summarize learner responses and improve course content.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/task%203%20photo-98xMYCSZ12jguNE7KvsfN16mbV5Yve.jpg",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/task%203%20photo-98xMYCSZ12jguNE7KvsfN16mbV5Yve.jpg",
     technologies: ["Python", "Pandas", "Flask", "CSV"],
     features: ["Ratings form", "Feedback storage", "Basic analytics", "CSV export"],
     liveUrl: "https://drive.google.com/drive/folders/1AQTnhOhA8o6TnocyPBvRxnLy7I1cnK7a?usp=sharing",
@@ -19,7 +20,8 @@ const projectDetails: { [key: string]: any } = {
     description: "A professional video profile showcasing intro, skills, AI projects, and career goals.",
     fullDescription:
       "Full documentation coming soon: storyboarding, script, recorded footage, editing steps, and final exported profile video for portfolio presentation.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/task%202%20image-TcYZYxvOzvP6no7pDOI0d2vFozSD3X.jpeg",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/task%202%20image-TcYZYxvOzvP6no7pDOI0d2vFozSD3X.jpeg",
     technologies: ["Figma", "Adobe Premiere", "Storyboarding"],
     features: ["Script & storyboard", "Recording setup", "Editing & color grading", "Final export"],
     liveUrl: "https://drive.google.com/file/d/1N6A_olaMZGfxORCYEYJm26x1i2nvjCb9/view?usp=sharing",
@@ -30,7 +32,8 @@ const projectDetails: { [key: string]: any } = {
     description: "Ratings and feedback collection system for the Vibe Coding Course.",
     fullDescription:
       "Full documentation coming soon: forms to collect learner ratings, backend to store responses, and dashboard to visualize feedback and improve course modules.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/task%201%20photo-BdrTFYI6JLTQTWqmS4y0apKXrnvXNR.jpg",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/task%201%20photo-BdrTFYI6JLTQTWqmS4y0apKXrnvXNR.jpg",
     technologies: ["React", "Node.js", "Express"],
     features: ["Feedback form", "Backend API", "Dashboard visuals", "Export reports"],
     liveUrl: "https://drive.google.com/drive/folders/1dPV7dPibJc7g-cVZIhgavF_BFJ9r2jiv?usp=sharing",
@@ -41,10 +44,11 @@ const projectDetails: { [key: string]: any } = {
     description: "Create AI-powered automation workflows using tools like Zapier/Make and custom scripts.",
     fullDescription:
       "Full documentation coming soon: Built an AI-powered automated workflow that pulls data from Google Sheets, processes it using ChatGPT API, and sends results to output apps automatically.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/task%204%20imaage-UmlJyVdMOsvOdWjNrEygvVsIdo6nH6.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/task%204%20imaage-UmlJyVdMOsvOdWjNrEygvVsIdo6nH6.png",
     technologies: ["Zapier", "Make", "APIs", "Python"],
     features: ["Trigger-action flows", "API integrations", "Error handling", "Scheduling"],
-    gumloop : "https://www.gumloop.com/pipeline?workbook_id=xjEkz3pFjJ1JeSL7sh1Coj",
+    gumloop: "https://www.gumloop.com/pipeline?workbook_id=xjEkz3pFjJ1JeSL7sh1Coj",
     liveUrl: "https://drive.google.com/drive/folders/1QXPjiUV4IlFDLwWn6MOzWDy6ho1op-so?usp=sharing",
     documents: [] as { name: string; file: string }[],
   },
@@ -128,7 +132,28 @@ const projectDetails: { [key: string]: any } = {
   },
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export async function generateStaticParams() {
+  const slugs = [
+    "data-science-course",
+    "professional-video-profile",
+    "vibe-coding-course",
+    "automation-arena",
+    "ai-agent",
+    "ai-influencer-tracker",
+    "stack-showdown",
+    "ai-content-forge",
+    "vibe-coding-sprint",
+    "viral-replicator",
+    "polish-and-present",
+  ]
+
+  return slugs.map((slug) => ({
+    slug,
+  }))
+}
+
+export default async function ProjectPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params
   const project = projectDetails[params.slug]
 
   if (!project) {
@@ -162,12 +187,16 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
           {/* Buttons */}
           <div className="flex gap-4">
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-purple-600 hover:bg-purple-700">View on GitHub</Button>
-            </a>
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline">View Live</Button>
-            </a>
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-purple-600 hover:bg-purple-700">View on GitHub</Button>
+              </a>
+            )}
+            {project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline">View Live</Button>
+              </a>
+            )}
           </div>
         </div>
 
@@ -208,11 +237,17 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                       </div>
                       {/* preview for common types */}
                       {/\.(png|jpe?g|webp|gif)$/i.test(doc.file) ? (
-                        <img src={doc.file} alt={doc.name} className="mt-3 w-full object-cover rounded" />
+                        <img
+                          src={doc.file || "/placeholder.svg"}
+                          alt={doc.name}
+                          className="mt-3 w-full object-cover rounded"
+                        />
                       ) : /\.(pdf)$/i.test(doc.file) ? (
                         <iframe src={doc.file} className="mt-3 w-full h-56 rounded" />
                       ) : (
-                        <div className="mt-3 text-sm text-muted-foreground">No preview available — download to view.</div>
+                        <div className="mt-3 text-sm text-muted-foreground">
+                          No preview available — download to view.
+                        </div>
                       )}
                     </div>
                   ))}
@@ -242,12 +277,16 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <div className="bg-card border border-purple-500/30 rounded-lg p-6">
               <h3 className="font-bold mb-3">Links</h3>
               <div className="flex flex-col gap-2">
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="underline">
-                  GitHub
-                </a>
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="underline">
-                  Live / Demo
-                </a>
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="underline">
+                    GitHub
+                  </a>
+                )}
+                {project.liveUrl && (
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="underline">
+                    Live / Demo
+                  </a>
+                )}
               </div>
             </div>
           </div>
